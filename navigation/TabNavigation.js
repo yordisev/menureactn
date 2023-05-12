@@ -47,11 +47,15 @@ const TabNavigation = () => {
         //     <Stack.Screen name="Detalle" component={Detalle} />
         //   </Stack.Navigator>
         <Drawer.Navigator drawerContent={props => <Profile{...props} />}
-            screenOptions={{ headerShown: false,
+            screenOptions={{ headerShown: true,
                             drawerActiveBackgroundColor:'#3393FF',
                             drawerActiveTintColor:'#fff',
                             drawerInactiveTintColor:'#333',
-                             drawerLabelStyle: { marginLeft: -25, fontSize: 15 } }}
+                             drawerLabelStyle: { marginLeft: -25, fontSize: 15 },
+                             drawerStyle: {
+                                width: 300,
+                                // marginTop:30
+                              }, }}
             style={styles.container}>
             <Drawer.Screen name="Rutas" component={Rutas} options={{
                 drawerIcon: ({ color }) => (
