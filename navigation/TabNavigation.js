@@ -58,6 +58,10 @@ const TabNavigation = () => {
                               }, }}
             style={styles.container}>
             <Drawer.Screen name="Rutas" component={Rutas} options={{
+                headerStyle:{
+                    backgroundColor:'#3393FF'
+                },
+                headerTintColor:'#fff',
                 drawerIcon: ({ color }) => (
                     <AntDesign name="home" size={24} color={color} />
                 )

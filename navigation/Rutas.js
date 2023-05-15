@@ -33,7 +33,7 @@ const Rutas = () => {
         options={{
           tabBarLabel: 'Listado',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
+            <MaterialCommunityIcons name="camera-plus" color={color} size={26} />
           ),
         }} />
     </Tabbotton.Navigator>
