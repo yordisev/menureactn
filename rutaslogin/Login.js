@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { View, Text, TouchableOpacity, TextInput, Platform, StyleSheet, StatusBar, Alert} from 'react-native';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -82,16 +83,24 @@ const Login = ({navigation}) => {
         } );
 
         if ( data.username.length == 0 || data.password.length == 0 ) {
-            Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
-                {text: 'Okay'}
-            ]);
+                    Toast.show({
+                    type: ALERT_TYPE.WARNING,
+                    title: 'Verificar',
+                    textBody: 'Los Campos no Pueden estar vacios',
+                    })
             return;
         }
 
         if ( datousuario.length == 0 ) {
-            Alert.alert('Invalid User!', 'Username or password is incorrect.', [
-                {text: 'Okay'}
-            ]);
+            // Alert.alert('Invalid User!', 'Username or password is incorrect.', [
+            //     {text: 'Okay'}
+            // ]);
+            Dialog.show({
+                type: ALERT_TYPE.DANGER, //DANGER,WARNING
+                title: 'Error',
+                textBody: 'Usuario o Contraseña Incorrectas',
+                button: 'close',
+              })
             return;
         }
         setUser(datousuario)
@@ -99,6 +108,7 @@ const Login = ({navigation}) => {
     }
 
     return (
+        <AlertNotificationRoot>
       <View style={styles.container}>
           <StatusBar backgroundColor='#3393FF' barStyle="light-content"/>
         <View style={styles.header}>
@@ -226,6 +236,7 @@ const Login = ({navigation}) => {
             </View>
         </Animatable.View>
       </View>
+      </AlertNotificationRoot>
     );
 };
 
