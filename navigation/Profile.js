@@ -3,8 +3,14 @@ import { DrawerContentScrollView,DrawerItemList } from '@react-navigation/drawer
 import {View, Text,StyleSheet, ImageBackground,Image } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import {useAuth} from '../ValidarLogin'
 
 const Profile = (props) => {
+  const [_, setUser] = useAuth();
+  const CerrarSession = () => {
+    const datovacio = null;
+    setUser(datovacio)
+}
   return (
     <View style={{flex:1}}>
     <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor: '#3393FF'}}>
@@ -22,7 +28,7 @@ const Profile = (props) => {
         </View>
     </DrawerContentScrollView>
     <View style={{padding:20,borderTopWidth:1,borderTopColor:'#ccc'}}>
-        <TouchableOpacity onPress={()=>{}} style={{paddingVertical:15}}>
+        <TouchableOpacity onPress={()=>{CerrarSession()}} style={{paddingVertical:15}}>
             <View style={{flexDirection:'row',alignItems:'center'}}>
             <FontAwesome5 name="window-close" size={24} color="black" />
         <Text style={{fontSize:15,marginLeft:5}}>Cerrar Sesion</Text>

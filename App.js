@@ -3,13 +3,31 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigation from './navigation/TabNavigation';
+import RutaPrincipal from './rutaslogin/RutaPrincipal';
+import AuthProvider,{useAuth} from './ValidarLogin';
 
+
+const Acceso = () => {
+  const [user] = useAuth();
+  if(!user){
+      return(
+        // <TabNavigation />
+        <RutaPrincipal/>
+      );
+  }
+  return (
+    // <RutaPrincipal/>
+        <TabNavigation />
+  )
+}
 const App = () => {
   return (
     <SafeAreaProvider style={styles.container}>
       <NavigationContainer>
-        <TabNavigation />
-      </NavigationContainer>
+      <AuthProvider>
+        <Acceso/>
+        </AuthProvider>
+        </NavigationContainer>
     </SafeAreaProvider>
   );
 };
